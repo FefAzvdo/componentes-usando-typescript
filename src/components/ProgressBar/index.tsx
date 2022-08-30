@@ -5,9 +5,10 @@ import "./styles.css";
 type ProgressBarProps = {
   barWidth: number;
   step?: number | 15;
+  duration: number;
 };
 
-const ProgressBar = ({ barWidth, step }: ProgressBarProps) => {
+const ProgressBar = ({ barWidth, step, duration }: ProgressBarProps) => {
   const [sizeOfTheBar, setSizeOfTheBar] = useState(0);
 
   const increment = () => {
@@ -24,7 +25,7 @@ const ProgressBar = ({ barWidth, step }: ProgressBarProps) => {
     } else {
       setTimeout(() => {
         increment();
-      }, 50);
+      }, duration);
     }
   }, [sizeOfTheBar]);
 
