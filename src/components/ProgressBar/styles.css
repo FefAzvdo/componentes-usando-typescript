@@ -1,0 +1,27 @@
+
+
+
+.progressBarWrapper {
+  min-width: 250px;
+  height: 20px;
+  margin: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  border-radius: 13px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  border: 2px solid black;
+};
+
+.progressBarWrapperSpan {
+  width: 0px;
+ background-color: blue;
+ animation: mymove infinite;
+ animation-duration: 3s;
+}
+
+@keyframes mymove {
+  from {width: 0px;}
+  to {width: 250px;}
+}
