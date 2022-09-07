@@ -31,4 +31,5 @@ export const ProgressBarInnerDiv = styled.div<ProgressBarInnerDivProps>`
   color: ${(props) => `${props.colorOfProgressBar}`};
   margin-left: 3px;
   margin-right: 3px;
+  transition: all 0.5s;
 `;
