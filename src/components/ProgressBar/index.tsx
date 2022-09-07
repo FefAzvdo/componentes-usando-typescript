@@ -3,21 +3,21 @@ import { ProgressBarInnerDiv, ProgressBarWrapper } from "./styles";
 import "./styles.css";
 
 type ProgressBarProps = {
-  barWidth: number;
-  barHeight?: number | 2;
-  step?: number | 15;
-  duration: number;
-  isInfinite?: boolean | false;
+  barWidth?: number;
+  barHeight?: number;
+  step?: number;
+  duration?: number;
+  isInfinite?: boolean;
   barColor?: string;
 };
 
 const ProgressBar = ({
-  barWidth,
-  step,
-  duration,
-  isInfinite,
-  barHeight,
-  barColor,
+  barWidth = 250,
+  step = 15,
+  duration = 50,
+  isInfinite = true,
+  barHeight = 12,
+  barColor = "blue",
 }: ProgressBarProps) => {
   const BAR_WIDTH = Number(barWidth);
   const STEP = Number(step);
