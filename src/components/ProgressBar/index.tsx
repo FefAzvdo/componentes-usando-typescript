@@ -6,15 +6,15 @@ type ProgressBarProps = {
   barWidth?: number;
   barHeight?: number;
   step?: number;
-  duration?: number;
+  stepDuration?: number;
   isInfinite?: boolean;
   barColor?: string;
 };
 
 const ProgressBar = ({
-  barWidth = 80,
+  barWidth = 250,
   step = 15,
-  duration = 100,
+  stepDuration = 2500,
   isInfinite = true,
   barHeight = 12,
   barColor = "blue",
@@ -29,14 +29,21 @@ const ProgressBar = ({
   };
 
   useEffect(() => {
+    const timer = setInterval(() => {
+      increment();
+    }, stepDuration);
+
     if (sizeOfTheBar >= BAR_WIDTH) {
-      isInfinite ? setSizeOfTheBar(0) : setSizeOfTheBar(BAR_WIDTH);
+      if (isInfinite) {
+        setSizeOfTheBar(0);
+      } else {
+        setSizeOfTheBar(BAR_WIDTH);
+        clearInterval(timer);
+      }
     } else {
-      setTimeout(() => {
-        increment();
-      }, duration);
+      timer.ref;
     }
-  }, [sizeOfTheBar]);
+  }, []);
 
   return (
     <div
