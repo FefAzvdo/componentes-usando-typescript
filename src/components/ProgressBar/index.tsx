@@ -4,15 +4,28 @@ import "./styles.css";
 
 type ProgressBarProps = {
   barWidth: number;
+  barHeight?: number | 2;
   step?: number | 15;
   duration: number;
+  isInfinite?: boolean | false;
+  barColor?: string;
 };
 
-const ProgressBar = ({ barWidth, step, duration }: ProgressBarProps) => {
+const ProgressBar = ({
+  barWidth,
+  step,
+  duration,
+  isInfinite,
+  barHeight,
+  barColor,
+}: ProgressBarProps) => {
+  const BAR_WIDTH = Number(barWidth);
+  const STEP = Number(step);
+
   const [sizeOfTheBar, setSizeOfTheBar] = useState(0);
 
   const increment = () => {
-    setSizeOfTheBar((prev) => prev + Number(step));
+    setSizeOfTheBar((prev) => prev + STEP);
   };
 
   useEffect(() => {
@@ -20,8 +33,8 @@ const ProgressBar = ({ barWidth, step, duration }: ProgressBarProps) => {
   }, []);
 
   useEffect(() => {
-    if (sizeOfTheBar >= barWidth) {
-      setSizeOfTheBar(barWidth);
+    if (sizeOfTheBar >= BAR_WIDTH) {
+      isInfinite ? setSizeOfTheBar(0) : setSizeOfTheBar(BAR_WIDTH);
     } else {
       setTimeout(() => {
         increment();
@@ -30,10 +43,15 @@ const ProgressBar = ({ barWidth, step, duration }: ProgressBarProps) => {
   }, [sizeOfTheBar]);
 
   return (
-    <ProgressBarWrapper sizeOfTheProgressBarWrapper={barWidth}>
-      <ProgressBarInnerDiv sizeOfTheBar={sizeOfTheBar} barColor="red">
-        .
-      </ProgressBarInnerDiv>
+    <ProgressBarWrapper
+      sizeOfTheProgressBarWrapper={barWidth}
+      heightOfProgressBarWrapper={barHeight}
+    >
+      <ProgressBarInnerDiv
+        sizeOfProgressBarInnerDiv={sizeOfTheBar}
+        heightOfProgressBarInnerDiv={barHeight}
+        colorOfProgressBar={barColor}
+      />
     </ProgressBarWrapper>
   );
 };

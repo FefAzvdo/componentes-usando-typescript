@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 type ProgressBarWrapperInnerDivProps = {
   sizeOfTheProgressBarWrapper?: number;
+  heightOfProgressBarWrapper?: number;
 };
 
 export const ProgressBarWrapper = styled.div<ProgressBarWrapperInnerDivProps>`
-  width: ${(props) => `${props?.sizeOfTheProgressBarWrapper}px` || 0};
-  height: 20px;
-  margin: 10px;
+  width: ${(props) => `${props?.sizeOfTheProgressBarWrapper}px`};
+  height: ${(props) => `${props?.heightOfProgressBarWrapper}px`};
   padding-top: 3px;
   padding-bottom: 3px;
   border-radius: 13px;
@@ -18,13 +18,15 @@ export const ProgressBarWrapper = styled.div<ProgressBarWrapperInnerDivProps>`
 `;
 
 type ProgressBarInnerDivProps = {
-  sizeOfTheBar: number;
-  barColor: string;
+  sizeOfProgressBarInnerDiv: number;
+  heightOfProgressBarInnerDiv?: number;
+  colorOfProgressBar?: string;
 };
 
 export const ProgressBarInnerDiv = styled.div<ProgressBarInnerDivProps>`
-  width: ${(props) => `${props.sizeOfTheBar}px` || 0};
-  background-color: ${(props) => `${props.barColor}` || "blue"};
+  width: ${(props) => `${props.sizeOfProgressBarInnerDiv}px`};
+  height: ${(props) => `${props?.heightOfProgressBarInnerDiv}px`};
+  background-color: ${(props) => props.colorOfProgressBar || "blue"};
   border-radius: 60px;
-  color: ${(props) => `${props.barColor}` || "blue"};
+  color: ${(props) => `${props.colorOfProgressBar}`};
 `;
