@@ -15,7 +15,7 @@ const ProgressBar = ({
   barWidth = 250,
   step = 15,
   duration = 50,
-  isInfinite = true,
+  isInfinite = false,
   barHeight = 12,
   barColor = "blue",
 }: ProgressBarProps) => {
@@ -28,9 +28,9 @@ const ProgressBar = ({
     setSizeOfTheBar((prev) => prev + STEP);
   };
 
-  useEffect(() => {
-    increment();
-  }, []);
+  // useEffect(() => {
+  //   increment();
+  // }, []);
 
   useEffect(() => {
     if (sizeOfTheBar >= BAR_WIDTH) {
@@ -43,16 +43,22 @@ const ProgressBar = ({
   }, [sizeOfTheBar]);
 
   return (
-    <ProgressBarWrapper
-      sizeOfTheProgressBarWrapper={barWidth}
-      heightOfProgressBarWrapper={barHeight}
+    <div
+      onClick={() => {
+        increment();
+      }}
     >
-      <ProgressBarInnerDiv
-        sizeOfProgressBarInnerDiv={sizeOfTheBar}
-        heightOfProgressBarInnerDiv={barHeight}
-        colorOfProgressBar={barColor}
-      />
-    </ProgressBarWrapper>
+      <ProgressBarWrapper
+        sizeOfTheProgressBarWrapper={barWidth}
+        heightOfProgressBarWrapper={barHeight}
+      >
+        <ProgressBarInnerDiv
+          sizeOfProgressBarInnerDiv={sizeOfTheBar}
+          heightOfProgressBarInnerDiv={barHeight}
+          colorOfProgressBar={barColor}
+        />
+      </ProgressBarWrapper>
+    </div>
   );
 };
 
