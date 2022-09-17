@@ -3,6 +3,7 @@ import styled from "styled-components";
 type ProgressBarWrapperInnerDivProps = {
   sizeOfTheProgressBarWrapper?: number;
   heightOfProgressBarWrapper?: number;
+  colorOfWraperBorder?: string;
 };
 
 export const ProgressBarWrapper = styled.div<ProgressBarWrapperInnerDivProps>`
@@ -14,7 +15,7 @@ export const ProgressBarWrapper = styled.div<ProgressBarWrapperInnerDivProps>`
   display: flex;
   justify-content: start;
   align-items: center;
-  border: 2px solid black;
+  border: 2px solid ${(props) => `${props.colorOfWraperBorder}`};
 `;
 
 type ProgressBarInnerDivProps = {
@@ -31,5 +32,5 @@ export const ProgressBarInnerDiv = styled.div<ProgressBarInnerDivProps>`
   color: ${(props) => `${props.colorOfProgressBar}`};
   margin-left: 3px;
   margin-right: 3px;
-  transition: all 0.5s;
+  transition: all 0.5s; // Fluidez na transição de tudo
 `;
