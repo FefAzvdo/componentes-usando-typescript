@@ -9,15 +9,18 @@ type ProgressBarProps = {
   stepDuration?: number;
   isInfinite?: boolean;
   barColor?: string;
+
+  //
+  colorOfWraperBorder?: string;
 };
 
 const ProgressBar = ({
   barWidth = 250,
   step = 15,
-  stepDuration = 2500,
-  isInfinite = true,
+  stepDuration = 250,
   barHeight = 12,
   barColor = "blue",
+  colorOfWraperBorder = "black",
 }: ProgressBarProps) => {
   const BAR_WIDTH = Number(barWidth);
   const STEP = Number(step);
@@ -34,12 +37,10 @@ const ProgressBar = ({
     }, stepDuration);
 
     if (sizeOfTheBar >= BAR_WIDTH) {
-      if (isInfinite) {
-        setSizeOfTheBar(0);
-      } else {
-        setSizeOfTheBar(BAR_WIDTH);
+      return () => {
+        alert("desmonta");
         clearInterval(timer);
-      }
+      };
     } else {
       timer.ref;
     }
@@ -54,6 +55,7 @@ const ProgressBar = ({
       <ProgressBarWrapper
         sizeOfTheProgressBarWrapper={barWidth}
         heightOfProgressBarWrapper={barHeight}
+        colorOfWraperBorder={colorOfWraperBorder}
       >
         <ProgressBarInnerDiv
           sizeOfProgressBarInnerDiv={sizeOfTheBar}
